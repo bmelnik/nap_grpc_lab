@@ -1,0 +1,59 @@
+{
+  "name": "complex-grpc",
+  "template": {
+      "name": "POLICY_TEMPLATE_NGINX_BASE"
+  },
+  "blocking-settings": {
+      "violations": [
+          {
+              "name": "VIOL_GRPC_FORMAT",
+              "alarm": true,
+              "block": true
+          },
+          {
+              "name": "VIOL_GRPC_METHOD",
+              "block": true,
+              "alarm": true
+          },
+          {
+              "name": "VIOL_GRPC_MALFORMED",
+              "block": true,
+              "alarm": true
+          },
+          {
+              "name": "VIOL_URL",
+              "block": true,
+              "alarm": true
+          }
+      ]
+  },
+  "grpc-profiles": [
+      {
+          "name": "gprof1",
+          "description": "My first profile",
+          "autoAssociate": true,
+          "attackSignaturesCheck": true,
+          "signatureOverrides": [
+              {
+                  "signature": {
+                      "signatureId": 200000157
+                  },
+                  "enabled": false
+              }
+          ],
+          "defenseAttributes": {
+              "maximumDataLength": 100000,
+              "allowUnknownFields": false
+          },
+          "idlFiles": [
+              {
+                  "idlFile": {
+                      "$ref": "file://hello.proto"
+                  },
+                  "isPrimary": true
+              }
+          ]
+      }
+  ],
+  "enforcementMode": "blocking"
+}
