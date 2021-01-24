@@ -1,6 +1,3 @@
-#downloads and prepers grpcurl tool
-./grpcurl/grpcurl_start.sh
-
 #pulls the grpc-server and running it
 docker run --name grpc_server -d --rm bmelnik0/grpchello:latest python server.py
 
