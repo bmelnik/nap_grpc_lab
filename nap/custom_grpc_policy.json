@@ -55,5 +55,10 @@
           ]
       }
   ],
-  "enforcementMode": "blocking"
+  "enforcementMode": "blocking",
+  "bot-defense": {
+    "settings": {
+        "isEnabled": false
+      }
+  }
 }
